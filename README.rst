@@ -1,17 +1,66 @@
+Install jEdit
+=============
+
+::
+
+  $ sudo apt install jedit 
+  
+  $ apt list jedit 
+  Listing... Done
+  jedit/bionic,bionic,now 5.5.0+dfsg-1 all [installed]
+  
+  $ jedit -version
+  jEdit 5.5.0
+  $ jedit -usage
 
 
-$ sudo apt install jedit 
+Start jEdit ::
 
-$ apt list jedit 
-Listing... Done
-jedit/bionic,bionic,now 5.5.0+dfsg-1 all [installed]
-
-$ jedit -version
-jEdit 5.5.0
-$ jedit -usage
+  $ jedit &
 
 
-$ jedit &
+.. image:: docs/pics/jedit1.png
+  :width: 400
+  :alt: jedit1
+  
+
+.. image:: docs/pics/jedit2.png
+  :width: 400
+  :alt: jedit2
+
+.. image:: docs/pics/jedit3.png
+  :width: 400
+  :alt: jedit3
+  
+.. image:: docs/pics/jedit4.png
+  :width: 400
+  :alt: jedit4
+
+.. image:: docs/pics/jedit5.png
+  :width: 400
+  :alt: jedit5
+
+.. image:: docs/pics/jedit6.png
+  :width: 400
+  :alt: jedit6
+  
+.. image:: docs/pics/jedit7.png
+  :width: 400
+  :alt: jedit7
+  
+
+.. image:: docs/pics/jedit8.png
+  :width: 400
+  :alt: jedit8
+
+.. image:: docs/pics/jedit9.png
+  :width: 400
+  :alt: jedit9
+
+.. image:: docs/pics/jedit10.png
+  :width: 400
+  :alt: jedit10
+
 
 BufferList
 CharacterMap
