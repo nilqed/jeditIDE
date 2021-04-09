@@ -127,14 +127,25 @@ Find ``spad`` (hopefully).
   :width: 400
   :alt: jedit9
 
+**Syntax highlighting**: Enter some keywords.
+
+The color scheme can be adjusted of course.
+
+
 .. image:: docs/pics/jedit10.png
   :width: 400
   :alt: jedit10
   
+  
 .. image:: docs/pics/jedit11.png
   :width: 400
   :alt: jedit11
-  
+
+
+
+Configure the Console
+---------------------
+Plugin -> Console -> compile & run
 
 .. image:: docs/pics/jedit12.png
   :width: 400
@@ -170,7 +181,7 @@ Find ``spad`` (hopefully).
 
 .. image:: docs/pics/jedit20.png
   :width: 400
-  :alt: jedit10
+  :alt: jedit20
 
 .. image:: docs/pics/jedit21.png
   :width: 400
