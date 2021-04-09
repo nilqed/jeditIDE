@@ -23,7 +23,7 @@ Install jEdit
 
 .. image:: docs/pics/jedit1.png
   :width: 200px
-  :height: 100ps
+  :height: 100px
   :align: center
   :alt: jedit1
  
