@@ -22,7 +22,9 @@ Install jEdit
 
 
 .. image:: docs/pics/jedit1.png
-  :width: 400
+  :width: 200px
+  :height: 100ps
+  :align: center
   :alt: jedit1
  
 Install Plugins
@@ -153,12 +155,13 @@ Plugin -> Console -> compile & run
 
 Configure the Context Menu
 --------------------------
+As above, configure the context menu.
 
 .. image:: docs/pics/jedit13.png
   :width: 400
   :alt: jedit13
   
-  Press the [+] button.
+Press the [+] button.
   
 .. image:: docs/pics/jedit14.png
   :width: 400
