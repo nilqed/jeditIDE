@@ -1,0 +1,7 @@
+<!-- this is an empty HTML document with the HTML 4.01 FRAMESET DTD
+     $Id: html-frameset.vm 20081 2011-10-15 16:19:59Z kerik-sf $
+  -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN"
+            "http://www.w3.org/TR/1999/REC-html401-19991224/frameset.dtd">
+<html>
+</html>

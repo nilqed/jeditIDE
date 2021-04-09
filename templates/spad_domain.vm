@@ -1,0 +1,37 @@
+#set ($categoryAssertions="Join(CoercibleTo OutputForm, ConvertibleTo String)")
+#set ($author="Kurt Pagani")
+#today ( $defaultdate )
+#today ( $yearonly "yyyy" )
+#today ( $otherdate "dd-MMM-yyyy" )
+#prompt ( "Domain abbreviation:" $abbrev )
+#prompt ( "Full domain name:" $domain )
+#prompt ( "Domain parameters:" $params )
+#prompt ( "Add domain:" $addDomain )
+#prompt ( "Category assertion(s):" $categoryAssertions )
+#prompt ( "Representation:" $rep )
+##
+)abbrev domain $abbrev $domain
+++ Author: $author
+++ Date Created: $defaultdate
+++ License: BSD
+++ References:
+++ Description:
+++
+$domain($params) : Exports == Implementation where
+  
+  --optional type declarations, e.g.
+  --PINT   ==> Polynomial(Integer)
+  --SBPINT ==> SegmentBinding(PINT)
+  
+  Exports == $categoryAssertions with
+    
+    --list of exported operations, e.g.
+    --coerce : % -> OutputForm
+	
+	
+  Implementation == $addDomain add 
+
+    Rep := $rep
+    
+    --list of function definitions for exported operations
+   

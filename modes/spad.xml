@@ -1,0 +1,925 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE MODE SYSTEM "xmode.dtd">
+
+<!-- SPAD Axiom/Fricas -->
+<!-- based on python.xml -->
+
+
+
+<MODE>
+
+	<PROPS>
+		<PROPERTY NAME="indentNextLines" VALUE="\s*[^#]{3,}:\s*(#.*)?" />
+		<PROPERTY NAME="indentOpenBrackets" VALUE="{[" />
+		<PROPERTY NAME="indentCloseBrackets" VALUE="}]" />
+		<PROPERTY NAME="unalignedOpenBrackets" VALUE="(" />
+		<PROPERTY NAME="unalignedCloseBrackets" VALUE=")" />
+		<PROPERTY NAME="unindentNextLines" VALUE="^\s*(pass|else\s*:|elif\s.*:|except(\s.*)?:|finally\s*:)\s*(#.*)?$" />
+		<PROPERTY NAME="unindentThisLine" VALUE="^\s*(else|elif\s.*|except(\s.*)?|finally)\s*:\s*(#.*)?" />
+		<PROPERTY NAME="lineComment" VALUE="--" />
+		<PROPERTY NAME="electricKeys" VALUE=":" />
+		<PROPERTY NAME="ignoreWhitespace" VALUE="false" />
+	</PROPS>
+	
+	<RULES IGNORE_CASE="FALSE" HIGHLIGHT_DIGITS="TRUE">
+	
+        <!-- Comment -->
+		<EOL_SPAN TYPE="COMMENT1">--</EOL_SPAN>
+        <EOL_SPAN TYPE="COMMENT2">++</EOL_SPAN>		
+
+		<!-- Type conversion 
+		<SPAN_REGEXP HASH_CHAR="::" MATCH_TYPE="KEYWORD4" DELEGATE="">
+			<BEGIN>::\w+(?:\.\w+)*\(</BEGIN>
+			<END>\)</END>
+		</SPAN_REGEXP>
+		-->
+		
+		<MARK_FOLLOWING TYPE="KEYWORD4">::</MARK_FOLLOWING>
+
+		<!-- )if ... )endif -->
+		<SPAN TYPE="LITERAL2" DELEGATE="LITERAL_TWO">
+			<BEGIN>)if</BEGIN>
+			<END>)endif</END>
+		</SPAN>
+
+
+		<!-- Standard literals -->
+		<SPAN TYPE="LITERAL1" DELEGATE="LITERAL_ONE">
+			<BEGIN>"</BEGIN>
+			<END>"</END>
+		</SPAN>
+		
+		<!--
+		<SPAN TYPE="LITERAL1" DELEGATE="LITERAL_ONE">
+			<BEGIN>'</BEGIN>
+			<END>'</END>
+		</SPAN>
+        -->
+        
+		<SEQ TYPE="OPERATOR">=</SEQ>
+		<SEQ TYPE="OPERATOR">:=</SEQ>
+		<SEQ TYPE="OPERATOR">==</SEQ>
+		<SEQ TYPE="OPERATOR">+-></SEQ>
+		<SEQ TYPE="OPERATOR">!</SEQ>
+		<SEQ TYPE="OPERATOR">&gt;=</SEQ>
+		<SEQ TYPE="OPERATOR">&lt;=</SEQ>
+		<SEQ TYPE="OPERATOR">+</SEQ>
+		<SEQ TYPE="OPERATOR">-</SEQ>
+		<SEQ TYPE="OPERATOR">/</SEQ>
+		<SEQ TYPE="OPERATOR">*</SEQ>
+		<SEQ TYPE="OPERATOR">&gt;</SEQ>
+		<SEQ TYPE="OPERATOR">&lt;</SEQ>
+		<SEQ TYPE="OPERATOR">%</SEQ>
+		<SEQ TYPE="OPERATOR">&amp;</SEQ>
+		<SEQ TYPE="OPERATOR">|</SEQ>
+		<SEQ TYPE="OPERATOR">^</SEQ>
+		<SEQ TYPE="OPERATOR">~</SEQ>
+        <SEQ TYPE="OPERATOR">$</SEQ>
+        <SEQ TYPE="OPERATOR">@</SEQ>
+		<SEQ TYPE="OPERATOR">:</SEQ>
+		<SEQ TYPE="OPERATOR">'</SEQ>
+		<SEQ TYPE="OPERATOR">\</SEQ>
+
+		<MARK_PREVIOUS TYPE="FUNCTION"
+			MATCH_TYPE="OPERATOR">(</MARK_PREVIOUS>
+		<SEQ TYPE="OPERATOR">)</SEQ>
+
+		<KEYWORDS>
+			<!--  Reserved Words  -->
+			<KEYWORD1>domain</KEYWORD1>
+            <KEYWORD1>category</KEYWORD1>
+            <KEYWORD1>package</KEYWORD1>
+            <KEYWORD1>where</KEYWORD1>
+            <KEYWORD1>with</KEYWORD1>
+            <KEYWORD1>if</KEYWORD1>
+            <KEYWORD1>then</KEYWORD1>
+            <KEYWORD1>else</KEYWORD1>
+            <KEYWORD1>error</KEYWORD1>
+            <KEYWORD1>not</KEYWORD1>
+            <KEYWORD1>free</KEYWORD1>
+            <KEYWORD1>local</KEYWORD1>
+            <KEYWORD1>import</KEYWORD1>
+            <KEYWORD1>Type</KEYWORD1>
+            <KEYWORD1>Record</KEYWORD1>
+            <KEYWORD1>Union</KEYWORD1>
+            <KEYWORD1>Join</KEYWORD1>
+            <KEYWORD1>Lisp</KEYWORD1>            
+            <KEYWORD1>for</KEYWORD1>
+            <KEYWORD1>in</KEYWORD1>
+            <KEYWORD1>by</KEYWORD1>
+            <KEYWORD1>while</KEYWORD1>
+            <KEYWORD1>repeat</KEYWORD1>
+            <KEYWORD1>do</KEYWORD1>
+            <KEYWORD1>iterate</KEYWORD1>
+            <KEYWORD1>break</KEYWORD1>
+            <KEYWORD1>return</KEYWORD1>
+            <KEYWORD1>and</KEYWORD1>
+            <KEYWORD1>or</KEYWORD1>
+            <KEYWORD1>has</KEYWORD1>
+            <KEYWORD1>case</KEYWORD1>
+            <KEYWORD1>is</KEYWORD1>
+            <KEYWORD1>isnt</KEYWORD1>
+            <KEYWORD1>exquo</KEYWORD1>
+            <KEYWORD1>quo</KEYWORD1>
+            <KEYWORD1>mod</KEYWORD1>
+            <KEYWORD1>rem</KEYWORD1>
+            <KEYWORD1>pretend</KEYWORD1>
+            <KEYWORD1>true</KEYWORD1>
+            <KEYWORD1>false</KEYWORD1>
+            <KEYWORD1>always</KEYWORD1>
+            <KEYWORD1>assert</KEYWORD1>
+            <KEYWORD1>but</KEYWORD1>
+            <KEYWORD1>default</KEYWORD1>
+            <KEYWORD1>define</KEYWORD1>
+            <KEYWORD1>delay</KEYWORD1>
+            <KEYWORD1>except</KEYWORD1>
+            <KEYWORD1>export</KEYWORD1>
+            <KEYWORD1>extend</KEYWORD1>
+            <KEYWORD1>fix</KEYWORD1>
+            <KEYWORD1>fluid</KEYWORD1>
+            <KEYWORD1>from</KEYWORD1>
+            <KEYWORD1>generate</KEYWORD1>
+            <KEYWORD1>goto</KEYWORD1>
+            <KEYWORD1>inline</KEYWORD1>
+            <KEYWORD1>iterate</KEYWORD1>
+            <KEYWORD1>let</KEYWORD1>
+            <KEYWORD1>macro</KEYWORD1>
+            <KEYWORD1>never</KEYWORD1>
+            <KEYWORD1>ref</KEYWORD1>
+            <KEYWORD1>rule</KEYWORD1>
+            <KEYWORD1>select</KEYWORD1>
+            <KEYWORD1>try</KEYWORD1>
+            <KEYWORD1>yield</KEYWORD1>
+            
+            
+			<!-- builtins -->
+			<KEYWORD2>nil</KEYWORD2>
+			<KEYWORD2>None</KEYWORD2>
+			<KEYWORD2>abs</KEYWORD2>
+			<KEYWORD2>all</KEYWORD2>
+			<KEYWORD2>any</KEYWORD2>
+			<KEYWORD2>apply</KEYWORD2>
+			<KEYWORD2>bool</KEYWORD2>
+			<KEYWORD2>buffer</KEYWORD2>
+			<KEYWORD2>callable</KEYWORD2>
+			<KEYWORD2>chr</KEYWORD2>
+			<KEYWORD2>classmethod</KEYWORD2>
+			<KEYWORD2>cmp</KEYWORD2>
+			<KEYWORD2>coerce</KEYWORD2>
+			<KEYWORD2>compile</KEYWORD2>
+			<KEYWORD2>complex</KEYWORD2>
+			<KEYWORD2>delattr</KEYWORD2>
+			<KEYWORD2>dict</KEYWORD2>
+			<KEYWORD2>dir</KEYWORD2>
+			<KEYWORD2>divmod</KEYWORD2>
+			<KEYWORD2>enumerate</KEYWORD2>
+			<KEYWORD2>eval</KEYWORD2>
+			<KEYWORD2>execfile</KEYWORD2>
+			<KEYWORD2>file</KEYWORD2>
+			<KEYWORD2>filter</KEYWORD2>
+			<KEYWORD2>float</KEYWORD2>
+			<KEYWORD2>frozenset</KEYWORD2>
+			<KEYWORD2>getattr</KEYWORD2>
+			<KEYWORD2>globals</KEYWORD2>
+			<KEYWORD2>hasattr</KEYWORD2>
+			<KEYWORD2>hash</KEYWORD2>
+			<KEYWORD2>hex</KEYWORD2>
+			<KEYWORD2>id</KEYWORD2>
+			<KEYWORD2>input</KEYWORD2>
+			<KEYWORD2>int</KEYWORD2>
+			<KEYWORD2>intern</KEYWORD2>
+			<KEYWORD2>isinstance</KEYWORD2>
+			<KEYWORD2>issubclass</KEYWORD2>
+			<KEYWORD2>iter</KEYWORD2>
+			<KEYWORD2>len</KEYWORD2>
+			<KEYWORD2>list</KEYWORD2>
+			<KEYWORD2>locals</KEYWORD2>
+			<KEYWORD2>long</KEYWORD2>
+			<KEYWORD2>map</KEYWORD2>
+			<KEYWORD2>max</KEYWORD2>
+			<KEYWORD2>min</KEYWORD2>
+      <KEYWORD2>nand</KEYWORD2>
+      <KEYWORD2>nor</KEYWORD2>
+			<KEYWORD2>object</KEYWORD2>
+			<KEYWORD2>oct</KEYWORD2>
+			<KEYWORD2>open</KEYWORD2>
+			<KEYWORD2>ord</KEYWORD2>
+			<KEYWORD2>pow</KEYWORD2>
+      <KEYWORD2>power</KEYWORD2>
+			<KEYWORD2>property</KEYWORD2>
+			<KEYWORD2>range</KEYWORD2>
+			<KEYWORD2>raw_input</KEYWORD2>
+			<KEYWORD2>reduce</KEYWORD2>
+			<KEYWORD2>reload</KEYWORD2>
+			<KEYWORD2>repr</KEYWORD2>
+			<KEYWORD2>round</KEYWORD2>
+			<KEYWORD2>set</KEYWORD2>
+			<KEYWORD2>setattr</KEYWORD2>
+			<KEYWORD2>slice</KEYWORD2>
+			<KEYWORD2>staticmethod</KEYWORD2>
+			<KEYWORD2>str</KEYWORD2>
+			<KEYWORD2>sum</KEYWORD2>
+			<KEYWORD2>super</KEYWORD2>
+			<KEYWORD2>tuple</KEYWORD2>
+			<KEYWORD2>type</KEYWORD2>
+			<KEYWORD2>unichr</KEYWORD2>
+			<KEYWORD2>unicode</KEYWORD2>
+			<KEYWORD2>vars</KEYWORD2>
+			<KEYWORD2>xrange</KEYWORD2>
+            <KEYWORD2>xor</KEYWORD2>
+			<KEYWORD2>zip</KEYWORD2>
+
+			
+			<!-- types (from types module) -->
+			<!-- domains -->
+			<KEYWORD3>PlaneAlgebraicCurvePlot</KEYWORD3>
+			<KEYWORD3>SimpleAlgebraicExtension</KEYWORD3>
+			<KEYWORD3>DataList</KEYWORD3>
+			<KEYWORD3>IndexCard</KEYWORD3>
+			<KEYWORD3>Database</KEYWORD3>
+			<KEYWORD3>QueryEquation</KEYWORD3>
+			<KEYWORD3>None</KEYWORD3>
+			<KEYWORD3>Any</KEYWORD3>
+			<KEYWORD3>PrimitiveArray</KEYWORD3>
+			<KEYWORD3>Tuple</KEYWORD3>
+			<KEYWORD3>IndexedFlexibleArray</KEYWORD3>
+			<KEYWORD3>FlexibleArray</KEYWORD3>
+			<KEYWORD3>IndexedOneDimensionalArray</KEYWORD3>
+			<KEYWORD3>OneDimensionalArray</KEYWORD3>
+			<KEYWORD3>InnerIndexedTwoDimensionalArray</KEYWORD3>
+			<KEYWORD3>IndexedTwoDimensionalArray</KEYWORD3>
+			<KEYWORD3>TwoDimensionalArray</KEYWORD3>
+			<KEYWORD3>Stack</KEYWORD3>
+			<KEYWORD3>ArrayStack</KEYWORD3>
+			<KEYWORD3>Queue</KEYWORD3>
+			<KEYWORD3>Dequeue</KEYWORD3>
+			<KEYWORD3>Heap</KEYWORD3>
+			<KEYWORD3>Reference</KEYWORD3>
+			<KEYWORD3>Boolean</KEYWORD3>
+			<KEYWORD3>IndexedBits</KEYWORD3>
+			<KEYWORD3>Bits</KEYWORD3>
+			<KEYWORD3>CardinalNumber</KEYWORD3>
+			<KEYWORD3>CartesianTensor</KEYWORD3>
+			<KEYWORD3>QuadraticForm</KEYWORD3>
+			<KEYWORD3>CliffordAlgebra</KEYWORD3>
+			<KEYWORD3>Color</KEYWORD3>
+			<KEYWORD3>Palette</KEYWORD3>
+			<KEYWORD3>OrderedCompletion</KEYWORD3>
+			<KEYWORD3>OnePointCompletion</KEYWORD3>
+			<KEYWORD3>ILogic</KEYWORD3>
+			<KEYWORD3>Untyped</KEYWORD3>
+			<KEYWORD3>Typed</KEYWORD3>
+			<KEYWORD3>Lambda</KEYWORD3>
+			<KEYWORD3>SKICombinators</KEYWORD3>
+			<KEYWORD3>InnerAlgebraicNumber</KEYWORD3>
+			<KEYWORD3>AlgebraicNumber</KEYWORD3>
+			<KEYWORD3>ContinuedFraction</KEYWORD3>
+			<KEYWORD3>RadicalFunctionField</KEYWORD3>
+			<KEYWORD3>AlgebraicFunctionField</KEYWORD3>
+			<KEYWORD3>ExtAlgBasis</KEYWORD3>
+			<KEYWORD3>AntiSymm</KEYWORD3>
+			<KEYWORD3>DeRhamComplex</KEYWORD3>
+			<KEYWORD3>DenavitHartenbergMatrix</KEYWORD3>
+			<KEYWORD3>DirichletRing</KEYWORD3>
+			<KEYWORD3>Sequence</KEYWORD3>
+			<KEYWORD3>Distribution</KEYWORD3>
+			<KEYWORD3>FractionalIdeal</KEYWORD3>
+			<KEYWORD3>FramedModule</KEYWORD3>
+			<KEYWORD3>HyperellipticFiniteDivisor</KEYWORD3>
+			<KEYWORD3>FiniteDivisor</KEYWORD3>
+			<KEYWORD3>OrderlyDifferentialVariable</KEYWORD3>
+			<KEYWORD3>SequentialDifferentialVariable</KEYWORD3>
+			<KEYWORD3>DifferentialSparseMultivariatePolynomial</KEYWORD3>
+			<KEYWORD3>OrderlyDifferentialPolynomial</KEYWORD3>
+			<KEYWORD3>SequentialDifferentialPolynomial</KEYWORD3>
+			<KEYWORD3>DrawOption</KEYWORD3>
+			<KEYWORD3>Equation</KEYWORD3>
+			<KEYWORD3>ExponentialOfUnivariatePuiseuxSeries</KEYWORD3>
+			<KEYWORD3>UnivariatePuiseuxSeriesWithExponentialSingularity</KEYWORD3>
+			<KEYWORD3>ExponentialExpansion</KEYWORD3>
+			<KEYWORD3>Expression</KEYWORD3>
+			<KEYWORD3>Pi</KEYWORD3>
+			<KEYWORD3>FiniteFieldCyclicGroupExtensionByPolynomial</KEYWORD3>
+			<KEYWORD3>FiniteFieldCyclicGroupExtension</KEYWORD3>
+			<KEYWORD3>FiniteFieldCyclicGroup</KEYWORD3>
+			<KEYWORD3>FiniteFieldNormalBasisExtensionByPolynomial</KEYWORD3>
+			<KEYWORD3>FiniteFieldNormalBasisExtension</KEYWORD3>
+			<KEYWORD3>FiniteFieldNormalBasis</KEYWORD3>
+			<KEYWORD3>FiniteFieldExtensionByPolynomial</KEYWORD3>
+			<KEYWORD3>FiniteFieldExtension</KEYWORD3>
+			<KEYWORD3>InnerFiniteField</KEYWORD3>
+			<KEYWORD3>FiniteField</KEYWORD3>
+			<KEYWORD3>File</KEYWORD3>
+			<KEYWORD3>TextFile</KEYWORD3>
+			<KEYWORD3>BinaryFile</KEYWORD3>
+			<KEYWORD3>KeyedAccessFile</KEYWORD3>
+			<KEYWORD3>Library</KEYWORD3>
+			<KEYWORD3>Float</KEYWORD3>
+			<KEYWORD3>IntegerMod</KEYWORD3>
+			<KEYWORD3>FileName</KEYWORD3>
+			<KEYWORD3>OrdSetInts</KEYWORD3>
+			<KEYWORD3>Commutator</KEYWORD3>
+			<KEYWORD3>FreeNilpotentLie</KEYWORD3>
+			<KEYWORD3>ScriptFormulaFormat</KEYWORD3>
+			<KEYWORD3>MachineInteger</KEYWORD3>
+			<KEYWORD3>MachineFloat</KEYWORD3>
+			<KEYWORD3>MachineComplex</KEYWORD3>
+			<KEYWORD3>FortranFormat</KEYWORD3>
+			<KEYWORD3>Result</KEYWORD3>
+			<KEYWORD3>FortranCode</KEYWORD3>
+			<KEYWORD3>FortranProgram</KEYWORD3>
+			<KEYWORD3>ThreeDimensionalMatrix</KEYWORD3>
+			<KEYWORD3>SimpleFortranProgram</KEYWORD3>
+			<KEYWORD3>Switch</KEYWORD3>
+			<KEYWORD3>FortranTemplate</KEYWORD3>
+			<KEYWORD3>FortranExpression</KEYWORD3>
+			<KEYWORD3>FortranScalarType</KEYWORD3>
+			<KEYWORD3>FortranType</KEYWORD3>
+			<KEYWORD3>SymbolTable</KEYWORD3>
+			<KEYWORD3>TheSymbolTable</KEYWORD3>
+			<KEYWORD3>FourierComponent</KEYWORD3>
+			<KEYWORD3>FourierSeries</KEYWORD3>
+			<KEYWORD3>FullPartialFractionExpansion</KEYWORD3>
+			<KEYWORD3>Factored</KEYWORD3>
+			<KEYWORD3>Localize</KEYWORD3>
+			<KEYWORD3>LocalAlgebra</KEYWORD3>
+			<KEYWORD3>Fraction</KEYWORD3>
+			<KEYWORD3>ListMonoidOps</KEYWORD3>
+			<KEYWORD3>FreeMonoid</KEYWORD3>
+			<KEYWORD3>FreeGroup</KEYWORD3>
+			<KEYWORD3>InnerFreeAbelianMonoid</KEYWORD3>
+			<KEYWORD3>FreeAbelianMonoid</KEYWORD3>
+			<KEYWORD3>FreeAbelianGroup</KEYWORD3>
+			<KEYWORD3>Complex</KEYWORD3>
+			<KEYWORD3>OrderedDirectProduct</KEYWORD3>
+			<KEYWORD3>HomogeneousDirectProduct</KEYWORD3>
+			<KEYWORD3>SplitHomogeneousDirectProduct</KEYWORD3>
+			<KEYWORD3>GeneralDistributedMultivariatePolynomial</KEYWORD3>
+			<KEYWORD3>DistributedMultivariatePolynomial</KEYWORD3>
+			<KEYWORD3>HomogeneousDistributedMultivariatePolynomial</KEYWORD3>
+			<KEYWORD3>GenericNonAssociativeAlgebra</KEYWORD3>
+			<KEYWORD3>GeneralizedUnivariatePowerSeries</KEYWORD3>
+			<KEYWORD3>LaurentPolynomial</KEYWORD3>
+			<KEYWORD3>Loop</KEYWORD3>
+			<KEYWORD3>DirectedGraph</KEYWORD3>
+			<KEYWORD3>FunctionGraph</KEYWORD3>
+			<KEYWORD3>UndirectedGraph</KEYWORD3>
+			<KEYWORD3>MultifunctionGraph</KEYWORD3>
+			<KEYWORD3>WeightedGraph</KEYWORD3>
+			<KEYWORD3>GeneralUnivariatePowerSeries</KEYWORD3>
+			<KEYWORD3>HashState</KEYWORD3>
+			<KEYWORD3>HTMLFormat</KEYWORD3>
+			<KEYWORD3>PolynomialIdeal</KEYWORD3>
+			<KEYWORD3>IndexedDirectProductObject</KEYWORD3>
+			<KEYWORD3>IntegrationResult</KEYWORD3>
+			<KEYWORD3>Integer</KEYWORD3>
+			<KEYWORD3>NonNegativeInteger</KEYWORD3>
+			<KEYWORD3>PositiveInteger</KEYWORD3>
+			<KEYWORD3>RomanNumeral</KEYWORD3>
+			<KEYWORD3>Interval</KEYWORD3>
+			<KEYWORD3>InfiniteTuple</KEYWORD3>
+			<KEYWORD3>SparseEchelonMatrix</KEYWORD3>
+			<KEYWORD3>JetBundle</KEYWORD3>
+			<KEYWORD3>IndexedJetBundle</KEYWORD3>
+			<KEYWORD3>JetBundleExpression</KEYWORD3>
+			<KEYWORD3>JetBundleXExpression</KEYWORD3>
+			<KEYWORD3>JetBundleLinearFunction</KEYWORD3>
+			<KEYWORD3>JetVectorField</KEYWORD3>
+			<KEYWORD3>JetDifferential</KEYWORD3>
+			<KEYWORD3>JetDifferentialEquation</KEYWORD3>
+			<KEYWORD3>JetBundleSymAna</KEYWORD3>
+			<KEYWORD3>JetLazyFunction</KEYWORD3>
+			<KEYWORD3>JetBundlePolynomial</KEYWORD3>
+			<KEYWORD3>DistributedJetBundlePolynomial</KEYWORD3>
+			<KEYWORD3>JetBundleQuasiLinearFunction</KEYWORD3>
+			<KEYWORD3>MakeCachableSet</KEYWORD3>
+			<KEYWORD3>Kernel</KEYWORD3>
+			<KEYWORD3>UnivariateLaurentSeriesConstructor</KEYWORD3>
+			<KEYWORD3>UnivariateLaurentSeries</KEYWORD3>
+			<KEYWORD3>AssociatedLieAlgebra</KEYWORD3>
+			<KEYWORD3>AssociatedJordanAlgebra</KEYWORD3>
+			<KEYWORD3>LieSquareMatrix</KEYWORD3>
+			<KEYWORD3>IndexedList</KEYWORD3>
+			<KEYWORD3>List</KEYWORD3>
+			<KEYWORD3>AssociationList</KEYWORD3>
+			<KEYWORD3>ListMultiDictionary</KEYWORD3>
+			<KEYWORD3>LinearOrdinaryDifferentialOperator</KEYWORD3>
+			<KEYWORD3>LinearOrdinaryDifferentialOperator1</KEYWORD3>
+			<KEYWORD3>LinearOrdinaryDifferentialOperator2</KEYWORD3>
+			<KEYWORD3>SetOfMIntegersInOneToN</KEYWORD3>
+			<KEYWORD3>OppositeMonogenicLinearOperator</KEYWORD3>
+			<KEYWORD3>OrdinaryDifferentialRing</KEYWORD3>
+			<KEYWORD3>DirectProductModule</KEYWORD3>
+			<KEYWORD3>DirectProductMatrixModule</KEYWORD3>
+			<KEYWORD3>UnivariateFormalPowerSeries</KEYWORD3>
+			<KEYWORD3>GuessOption</KEYWORD3>
+			<KEYWORD3>MathMLFormat</KEYWORD3>
+			<KEYWORD3>IndexedMatrix</KEYWORD3>
+			<KEYWORD3>Matrix</KEYWORD3>
+			<KEYWORD3>RectangularMatrix</KEYWORD3>
+			<KEYWORD3>SquareMatrix</KEYWORD3>
+			<KEYWORD3>SingletonAsOrderedSet</KEYWORD3>
+			<KEYWORD3>InputForm</KEYWORD3>
+			<KEYWORD3>ModMonic</KEYWORD3>
+			<KEYWORD3>ModuleMonomial</KEYWORD3>
+			<KEYWORD3>GeneralModulePolynomial</KEYWORD3>
+			<KEYWORD3>ModularRing</KEYWORD3>
+			<KEYWORD3>EuclideanModularRing</KEYWORD3>
+			<KEYWORD3>ModularField</KEYWORD3>
+			<KEYWORD3>MoebiusTransform</KEYWORD3>
+			<KEYWORD3>MonoidRing</KEYWORD3>
+			<KEYWORD3>OrderedExpression</KEYWORD3>
+			<KEYWORD3>Multiset</KEYWORD3>
+			<KEYWORD3>SparseMultivariateTaylorSeries</KEYWORD3>
+			<KEYWORD3>TaylorSeries</KEYWORD3>
+			<KEYWORD3>Polynomial</KEYWORD3>
+			<KEYWORD3>MultivariatePolynomial</KEYWORD3>
+			<KEYWORD3>SparseMultivariatePolynomial</KEYWORD3>
+			<KEYWORD3>IndexedExponents</KEYWORD3>
+			<KEYWORD3>AlgebraGivenByStructuralConstants</KEYWORD3>
+			<KEYWORD3>SplittingNode</KEYWORD3>
+			<KEYWORD3>SplittingTree</KEYWORD3>
+			<KEYWORD3>Point</KEYWORD3>
+			<KEYWORD3>SubSpaceComponentProperty</KEYWORD3>
+			<KEYWORD3>SubSpace</KEYWORD3>
+			<KEYWORD3>NewSparseUnivariatePolynomial</KEYWORD3>
+			<KEYWORD3>NewSparseMultivariatePolynomial</KEYWORD3>
+			<KEYWORD3>DoubleFloatVector</KEYWORD3>
+			<KEYWORD3>DoubleFloatMatrix</KEYWORD3>
+			<KEYWORD3>ComplexDoubleFloatVector</KEYWORD3>
+			<KEYWORD3>ComplexDoubleFloatMatrix</KEYWORD3>
+			<KEYWORD3>Octonion</KEYWORD3>
+			<KEYWORD3>OpenMathEncoding</KEYWORD3>
+			<KEYWORD3>OpenMathDevice</KEYWORD3>
+			<KEYWORD3>OpenMathConnection</KEYWORD3>
+			<KEYWORD3>OpenMathErrorKind</KEYWORD3>
+			<KEYWORD3>OpenMathError</KEYWORD3>
+			<KEYWORD3>BasicOperator</KEYWORD3>
+			<KEYWORD3>ModuleOperator</KEYWORD3>
+			<KEYWORD3>Operator</KEYWORD3>
+			<KEYWORD3>SmallOrdinal</KEYWORD3>
+			<KEYWORD3>Automorphism</KEYWORD3>
+			<KEYWORD3>SparseUnivariateSkewPolynomial</KEYWORD3>
+			<KEYWORD3>UnivariateSkewPolynomial</KEYWORD3>
+			<KEYWORD3>OutputForm</KEYWORD3>
+			<KEYWORD3>InnerPAdicInteger</KEYWORD3>
+			<KEYWORD3>PAdicInteger</KEYWORD3>
+			<KEYWORD3>BalancedPAdicInteger</KEYWORD3>
+			<KEYWORD3>PAdicRationalConstructor</KEYWORD3>
+			<KEYWORD3>PAdicRational</KEYWORD3>
+			<KEYWORD3>BalancedPAdicRational</KEYWORD3>
+			<KEYWORD3>ParametricPlaneCurve</KEYWORD3>
+			<KEYWORD3>ParametricSpaceCurve</KEYWORD3>
+			<KEYWORD3>ParametricSurface</KEYWORD3>
+			<KEYWORD3>PatternMatchResult</KEYWORD3>
+			<KEYWORD3>PatternMatchListResult</KEYWORD3>
+			<KEYWORD3>Pattern</KEYWORD3>
+			<KEYWORD3>Permutation</KEYWORD3>
+			<KEYWORD3>PermutationGroup</KEYWORD3>
+			<KEYWORD3>InnerPrimeField</KEYWORD3>
+			<KEYWORD3>PrimeField</KEYWORD3>
+			<KEYWORD3>PartialFraction</KEYWORD3>
+			<KEYWORD3>Plot</KEYWORD3>
+			<KEYWORD3>Plot3D</KEYWORD3>
+			<KEYWORD3>GeneralPolynomialSet</KEYWORD3>
+			<KEYWORD3>FreeModule</KEYWORD3>
+			<KEYWORD3>PolynomialRing</KEYWORD3>
+			<KEYWORD3>SparseUnivariatePolynomial</KEYWORD3>
+			<KEYWORD3>UnivariatePolynomial</KEYWORD3>
+			<KEYWORD3>Product</KEYWORD3>
+			<KEYWORD3>Partition</KEYWORD3>
+			<KEYWORD3>SymmetricPolynomial</KEYWORD3>
+			<KEYWORD3>UnivariatePuiseuxSeriesConstructor</KEYWORD3>
+			<KEYWORD3>UnivariatePuiseuxSeries</KEYWORD3>
+			<KEYWORD3>QuasiAlgebraicSet</KEYWORD3>
+			<KEYWORD3>GeneralQuaternion</KEYWORD3>
+			<KEYWORD3>Quaternion</KEYWORD3>
+			<KEYWORD3>RadixExpansion</KEYWORD3>
+			<KEYWORD3>BinaryExpansion</KEYWORD3>
+			<KEYWORD3>DecimalExpansion</KEYWORD3>
+			<KEYWORD3>HexadecimalExpansion</KEYWORD3>
+			<KEYWORD3>RightOpenIntervalRootCharacterization</KEYWORD3>
+			<KEYWORD3>RealClosure</KEYWORD3>
+			<KEYWORD3>RegularTriangularSet</KEYWORD3>
+			<KEYWORD3>ResidueRing</KEYWORD3>
+			<KEYWORD3>RewriteRule</KEYWORD3>
+			<KEYWORD3>Ruleset</KEYWORD3>
+			<KEYWORD3>SCartesian</KEYWORD3>
+			<KEYWORD3>SArgand</KEYWORD3>
+			<KEYWORD3>SConformal</KEYWORD3>
+			<KEYWORD3>SceneIFS</KEYWORD3>
+			<KEYWORD3>SceneNamedPoints</KEYWORD3>
+			<KEYWORD3>STransform</KEYWORD3>
+			<KEYWORD3>SBoundary</KEYWORD3>
+			<KEYWORD3>XmlAttribute</KEYWORD3>
+			<KEYWORD3>XmlElement</KEYWORD3>
+			<KEYWORD3>Scene</KEYWORD3>
+			<KEYWORD3>Segment</KEYWORD3>
+			<KEYWORD3>SegmentBinding</KEYWORD3>
+			<KEYWORD3>UniversalSegment</KEYWORD3>
+			<KEYWORD3>Set</KEYWORD3>
+			<KEYWORD3>SExpressionOf</KEYWORD3>
+			<KEYWORD3>SExpression</KEYWORD3>
+			<KEYWORD3>DoubleFloat</KEYWORD3>
+			<KEYWORD3>SingleInteger</KEYWORD3>
+			<KEYWORD3>SparseMultivariateSkewPolynomial</KEYWORD3>
+			<KEYWORD3>PartialDifferentialOperator</KEYWORD3>
+			<KEYWORD3>ThreeSpace</KEYWORD3>
+			<KEYWORD3>SquareFreeRegularTriangularSet</KEYWORD3>
+			<KEYWORD3>SparseMultivariatePolynomialExpressions</KEYWORD3>
+			<KEYWORD3>Stream</KEYWORD3>
+			<KEYWORD3>Character</KEYWORD3>
+			<KEYWORD3>CharacterClass</KEYWORD3>
+			<KEYWORD3>IndexedString</KEYWORD3>
+			<KEYWORD3>String</KEYWORD3>
+			<KEYWORD3>SuchThat</KEYWORD3>
+			<KEYWORD3>SparseUnivariateLaurentSeries</KEYWORD3>
+			<KEYWORD3>InnerSparseUnivariatePowerSeries</KEYWORD3>
+			<KEYWORD3>SparseUnivariatePuiseuxSeries</KEYWORD3>
+			<KEYWORD3>SparseUnivariateTaylorSeries</KEYWORD3>
+			<KEYWORD3>Symbol</KEYWORD3>
+			<KEYWORD3>HashTable</KEYWORD3>
+			<KEYWORD3>InnerTable</KEYWORD3>
+			<KEYWORD3>Table</KEYWORD3>
+			<KEYWORD3>EqTable</KEYWORD3>
+			<KEYWORD3>StringTable</KEYWORD3>
+			<KEYWORD3>GeneralSparseTable</KEYWORD3>
+			<KEYWORD3>SparseTable</KEYWORD3>
+			<KEYWORD3>Tableau</KEYWORD3>
+			<KEYWORD3>InnerTaylorSeries</KEYWORD3>
+			<KEYWORD3>UnivariateTaylorSeries</KEYWORD3>
+			<KEYWORD3>TensorProduct</KEYWORD3>
+			<KEYWORD3>TensorPower</KEYWORD3>
+			<KEYWORD3>TexFormat</KEYWORD3>
+			<KEYWORD3>TexmacsFormat</KEYWORD3>
+			<KEYWORD3>Tree</KEYWORD3>
+			<KEYWORD3>BinaryTree</KEYWORD3>
+			<KEYWORD3>BinarySearchTree</KEYWORD3>
+			<KEYWORD3>BinaryTournament</KEYWORD3>
+			<KEYWORD3>BalancedBinaryTree</KEYWORD3>
+			<KEYWORD3>PendantTree</KEYWORD3>
+			<KEYWORD3>GeneralTriangularSet</KEYWORD3>
+			<KEYWORD3>WuWenTsunTriangularSet</KEYWORD3>
+			<KEYWORD3>TubePlot</KEYWORD3>
+			<KEYWORD3>U32Vector</KEYWORD3>
+			<KEYWORD3>U32Matrix</KEYWORD3>
+			<KEYWORD3>U16Vector</KEYWORD3>
+			<KEYWORD3>U16Matrix</KEYWORD3>
+			<KEYWORD3>U8Vector</KEYWORD3>
+			<KEYWORD3>U8Matrix</KEYWORD3>
+			<KEYWORD3>OrderedVariableList</KEYWORD3>
+			<KEYWORD3>Variable</KEYWORD3>
+			<KEYWORD3>RuleCalled</KEYWORD3>
+			<KEYWORD3>FunctionCalled</KEYWORD3>
+			<KEYWORD3>AnonymousFunction</KEYWORD3>
+			<KEYWORD3>SortedExponentVector</KEYWORD3>
+			<KEYWORD3>VectorModularReconstructor</KEYWORD3>
+			<KEYWORD3>VectorIntegerReconstructor</KEYWORD3>
+			<KEYWORD3>IndexedVector</KEYWORD3>
+			<KEYWORD3>Vector</KEYWORD3>
+			<KEYWORD3>DirectProduct</KEYWORD3>
+			<KEYWORD3>GraphImage</KEYWORD3>
+			<KEYWORD3>TwoDimensionalViewport</KEYWORD3>
+			<KEYWORD3>ThreeDimensionalViewport</KEYWORD3>
+			<KEYWORD3>Void</KEYWORD3>
+			<KEYWORD3>Exit</KEYWORD3>
+			<KEYWORD3>VectorSpaceBasis</KEYWORD3>
+			<KEYWORD3>WeightedPolynomials</KEYWORD3>
+			<KEYWORD3>OrdinaryWeightedPolynomials</KEYWORD3>
+			<KEYWORD3>XHashTable</KEYWORD3>
+			<KEYWORD3>Magma</KEYWORD3>
+			<KEYWORD3>LyndonWord</KEYWORD3>
+			<KEYWORD3>LiePolynomial</KEYWORD3>
+			<KEYWORD3>PoincareBirkhoffWittLyndonBasis</KEYWORD3>
+			<KEYWORD3>XPBWPolynomial</KEYWORD3>
+			<KEYWORD3>LieExponentials</KEYWORD3>
+			<KEYWORD3>OrderedFreeMonoid</KEYWORD3>
+			<KEYWORD3>XPolynomialRing</KEYWORD3>
+			<KEYWORD3>XDistributedPolynomial</KEYWORD3>
+			<KEYWORD3>XRecursivePolynomial</KEYWORD3>
+			<KEYWORD3>XPolynomial</KEYWORD3>
+			<KEYWORD3>RegularChain</KEYWORD3>
+
+            <!-- categories -->
+            <KEYWORD3>Aggregate</KEYWORD3>
+            <KEYWORD3>Category</KEYWORD3>
+            <KEYWORD3>HomogeneousAggregate</KEYWORD3>
+            <KEYWORD3>Collection</KEYWORD3>
+            <KEYWORD3>BagAggregate</KEYWORD3>
+            <KEYWORD3>StackAggregate</KEYWORD3>
+            <KEYWORD3>QueueAggregate</KEYWORD3>
+            <KEYWORD3>DequeueAggregate</KEYWORD3>
+            <KEYWORD3>PriorityQueueAggregate</KEYWORD3>
+            <KEYWORD3>DictionaryOperations</KEYWORD3>
+            <KEYWORD3>Dictionary</KEYWORD3>
+            <KEYWORD3>MultiDictionary</KEYWORD3>
+            <KEYWORD3>SetAggregate</KEYWORD3>
+            <KEYWORD3>FiniteSetAggregate</KEYWORD3>
+            <KEYWORD3>MultisetAggregate</KEYWORD3>
+            <KEYWORD3>OrderedMultisetAggregate</KEYWORD3>
+            <KEYWORD3>KeyedDictionary</KEYWORD3>
+            <KEYWORD3>Eltable</KEYWORD3>
+            <KEYWORD3>EltableAggregate</KEYWORD3>
+            <KEYWORD3>IndexedAggregate</KEYWORD3>
+            <KEYWORD3>TableAggregate</KEYWORD3>
+            <KEYWORD3>RecursiveAggregate</KEYWORD3>
+            <KEYWORD3>BinaryRecursiveAggregate</KEYWORD3>
+            <KEYWORD3>DoublyLinkedAggregate</KEYWORD3>
+            <KEYWORD3>UnaryRecursiveAggregate</KEYWORD3>
+            <KEYWORD3>StreamAggregate</KEYWORD3>
+            <KEYWORD3>LinearAggregate</KEYWORD3>
+            <KEYWORD3>FiniteLinearAggregate</KEYWORD3>
+            <KEYWORD3>OneDimensionalArrayAggregate</KEYWORD3>
+            <KEYWORD3>ExtensibleLinearAggregate</KEYWORD3>
+            <KEYWORD3>ListAggregate</KEYWORD3>
+            <KEYWORD3>AssociationListAggregate</KEYWORD3>
+            <KEYWORD3>StringAggregate</KEYWORD3>
+            <KEYWORD3>BitAggregate</KEYWORD3>
+            <KEYWORD3>FiniteRankAlgebra</KEYWORD3>
+            <KEYWORD3>FramedAlgebra</KEYWORD3>
+            <KEYWORD3>MonogenicAlgebra</KEYWORD3>
+            <KEYWORD3>AlgebraicallyClosedField</KEYWORD3>
+            <KEYWORD3>AlgebraicallyClosedFunctionSpace</KEYWORD3>
+            <KEYWORD3>ModularAlgebraicGcdOperations</KEYWORD3>
+            <KEYWORD3>TwoDimensionalArrayCategory</KEYWORD3>
+            <KEYWORD3>finiteAggregate</KEYWORD3>
+            <KEYWORD3>shallowlyMutable</KEYWORD3>
+            <KEYWORD3>unitsKnown</KEYWORD3>
+            <KEYWORD3>noZeroDivisors</KEYWORD3>
+            <KEYWORD3>canonicalUnitNormal</KEYWORD3>
+            <KEYWORD3>canonicalsClosed</KEYWORD3>
+            <KEYWORD3>arbitraryPrecision</KEYWORD3>
+            <KEYWORD3>arbitraryExponent</KEYWORD3>
+            <KEYWORD3>Approximate</KEYWORD3>
+            <KEYWORD3>additiveValuation</KEYWORD3>
+            <KEYWORD3>multiplicativeValuation</KEYWORD3>
+            <KEYWORD3>Canonical</KEYWORD3>
+            <KEYWORD3>CommutativeStar</KEYWORD3>
+            <KEYWORD3>lazyRepresentation</KEYWORD3>
+            <KEYWORD3>VariablesCommuteWithCoefficients</KEYWORD3>
+            <KEYWORD3>Logic</KEYWORD3>
+            <KEYWORD3>GradedModule</KEYWORD3>
+            <KEYWORD3>GradedAlgebra</KEYWORD3>
+            <KEYWORD3>AbelianGroup</KEYWORD3>
+            <KEYWORD3>AbelianMonoid</KEYWORD3>
+            <KEYWORD3>AbelianSemiGroup</KEYWORD3>
+            <KEYWORD3>Algebra</KEYWORD3>
+            <KEYWORD3>BasicType</KEYWORD3>
+            <KEYWORD3>BiModule</KEYWORD3>
+            <KEYWORD3>CancellationAbelianMonoid</KEYWORD3>
+            <KEYWORD3>CharacteristicNonZero</KEYWORD3>
+            <KEYWORD3>CharacteristicZero</KEYWORD3>
+            <KEYWORD3>CommutativeRing</KEYWORD3>
+            <KEYWORD3>DifferentialRing</KEYWORD3>
+            <KEYWORD3>DifferentialExtension</KEYWORD3>
+            <KEYWORD3>DivisionRing</KEYWORD3>
+            <KEYWORD3>EntireRing</KEYWORD3>
+            <KEYWORD3>EuclideanDomain</KEYWORD3>
+            <KEYWORD3>Field</KEYWORD3>
+            <KEYWORD3>Finite</KEYWORD3>
+            <KEYWORD3>FullyLinearlyExplicitRingOver</KEYWORD3>
+            <KEYWORD3>GcdDomain</KEYWORD3>
+            <KEYWORD3>Group</KEYWORD3>
+            <KEYWORD3>IntegralDomain</KEYWORD3>
+            <KEYWORD3>LeftModule</KEYWORD3>
+            <KEYWORD3>LeftOreRing</KEYWORD3>
+            <KEYWORD3>LinearlyExplicitRingOver</KEYWORD3>
+            <KEYWORD3>Module</KEYWORD3>
+            <KEYWORD3>Monoid</KEYWORD3>
+            <KEYWORD3>OrderedAbelianGroup</KEYWORD3>
+            <KEYWORD3>OrderedAbelianMonoid</KEYWORD3>
+            <KEYWORD3>OrderedAbelianMonoidSup</KEYWORD3>
+            <KEYWORD3>OrderedAbelianSemiGroup</KEYWORD3>
+            <KEYWORD3>OrderedSemiGroup</KEYWORD3>
+            <KEYWORD3>OrderedCancellationAbelianMonoid</KEYWORD3>
+            <KEYWORD3>OrderedFinite</KEYWORD3>
+            <KEYWORD3>OrderedIntegralDomain</KEYWORD3>
+            <KEYWORD3>OrderedMonoid</KEYWORD3>
+            <KEYWORD3>OrderedRing</KEYWORD3>
+            <KEYWORD3>Comparable</KEYWORD3>
+            <KEYWORD3>PartialOrder</KEYWORD3>
+            <KEYWORD3>OrderedSet</KEYWORD3>
+            <KEYWORD3>PartialDifferentialRing</KEYWORD3>
+            <KEYWORD3>PolynomialFactorizationExplicit</KEYWORD3>
+            <KEYWORD3>PrincipalIdealDomain</KEYWORD3>
+            <KEYWORD3>RightModule</KEYWORD3>
+            <KEYWORD3>Ring</KEYWORD3>
+            <KEYWORD3>SemiRng</KEYWORD3>
+            <KEYWORD3>SemiRing</KEYWORD3>
+            <KEYWORD3>Rng</KEYWORD3>
+            <KEYWORD3>SemiGroup</KEYWORD3>
+            <KEYWORD3>SetCategory</KEYWORD3>
+            <KEYWORD3>StepThrough</KEYWORD3>
+            <KEYWORD3>UniqueFactorizationDomain</KEYWORD3>
+            <KEYWORD3>VectorSpace</KEYWORD3>
+            <KEYWORD3>Type</KEYWORD3>
+            <KEYWORD3>CoercibleTo</KEYWORD3>
+            <KEYWORD3>CoercibleFrom</KEYWORD3>
+            <KEYWORD3>ConvertibleTo</KEYWORD3>
+            <KEYWORD3>ConvertibleFrom</KEYWORD3>
+            <KEYWORD3>RetractableTo</KEYWORD3>
+            <KEYWORD3>RetractableFrom</KEYWORD3>
+            <KEYWORD3>CombinatorialOpsCategory</KEYWORD3>
+            <KEYWORD3>VarCat</KEYWORD3>
+            <KEYWORD3>TestCC</KEYWORD3>
+            <KEYWORD3>",longName]),_</KEYWORD3>
+            <KEYWORD3>FunctionFieldCategory</KEYWORD3>
+            <KEYWORD3>LeftAlgebra</KEYWORD3>
+            <KEYWORD3>SequenceCategory</KEYWORD3>
+            <KEYWORD3>DistributionCategory</KEYWORD3>
+            <KEYWORD3>FiniteDivisorCategory</KEYWORD3>
+            <KEYWORD3>DifferentialVariableCategory</KEYWORD3>
+            <KEYWORD3>DifferentialPolynomialCategory</KEYWORD3>
+            <KEYWORD3>InnerEvalable</KEYWORD3>
+            <KEYWORD3>Evalable</KEYWORD3>
+            <KEYWORD3>FullyEvalableOver</KEYWORD3>
+            <KEYWORD3>FieldOfPrimeCharacteristic</KEYWORD3>
+            <KEYWORD3>ExtensionField</KEYWORD3>
+            <KEYWORD3>FiniteAlgebraicExtensionField</KEYWORD3>
+            <KEYWORD3>FiniteFieldCategory</KEYWORD3>
+            <KEYWORD3>FileCategory</KEYWORD3>
+            <KEYWORD3>FileNameCategory</KEYWORD3>
+            <KEYWORD3>FortranFunctionCategory</KEYWORD3>
+            <KEYWORD3>FortranMatrixCategory</KEYWORD3>
+            <KEYWORD3>FortranProgramCategory</KEYWORD3>
+            <KEYWORD3>FortranVectorCategory</KEYWORD3>
+            <KEYWORD3>FortranMachineTypeCategory</KEYWORD3>
+            <KEYWORD3>FortranMatrixFunctionCategory</KEYWORD3>
+            <KEYWORD3>FortranVectorFunctionCategory</KEYWORD3>
+            <KEYWORD3>QuotientFieldCategory</KEYWORD3>
+            <KEYWORD3>FreeAbelianMonoidCategory</KEYWORD3>
+            <KEYWORD3>ExpressionSpace</KEYWORD3>
+            <KEYWORD3>FunctionSpace</KEYWORD3>
+            <KEYWORD3>ComplexCategory</KEYWORD3>
+            <KEYWORD3>FiniteGraph</KEYWORD3>
+            <KEYWORD3>AbelianProductCategory</KEYWORD3>
+            <KEYWORD3>IndexedDirectProductCategory</KEYWORD3>
+            <KEYWORD3>IntervalCategory</KEYWORD3>
+            <KEYWORD3>JetBundleCategory</KEYWORD3>
+            <KEYWORD3>JetBundleFunctionCategory</KEYWORD3>
+            <KEYWORD3>JetBundleBaseFunctionCategory</KEYWORD3>
+            <KEYWORD3>CachableSet</KEYWORD3>
+            <KEYWORD3>UnivariateLaurentSeriesConstructorCategory</KEYWORD3>
+            <KEYWORD3>LinearOrdinaryDifferentialOperatorCategory</KEYWORD3>
+            <KEYWORD3>MonogenicLinearOperator</KEYWORD3>
+            <KEYWORD3>MatrixCategory</KEYWORD3>
+            <KEYWORD3>RectangularMatrixCategory</KEYWORD3>
+            <KEYWORD3>SquareMatrixCategory</KEYWORD3>
+            <KEYWORD3>MonoidRingCategory</KEYWORD3>
+            <KEYWORD3>Monad</KEYWORD3>
+            <KEYWORD3>MonadWithUnit</KEYWORD3>
+            <KEYWORD3>NonAssociativeRng</KEYWORD3>
+            <KEYWORD3>NonAssociativeRing</KEYWORD3>
+            <KEYWORD3>NonAssociativeAlgebra</KEYWORD3>
+            <KEYWORD3>FiniteRankNonAssociativeAlgebra</KEYWORD3>
+            <KEYWORD3>FramedNonAssociativeAlgebra</KEYWORD3>
+            <KEYWORD3>PointCategory</KEYWORD3>
+            <KEYWORD3>RecursivePolynomialCategory</KEYWORD3>
+            <KEYWORD3>NormalizedTriangularSetCategory</KEYWORD3>
+            <KEYWORD3>SquareFreeNormalizedTriangularSetCategory</KEYWORD3>
+            <KEYWORD3>OctonionCategory</KEYWORD3>
+            <KEYWORD3>OpenMath</KEYWORD3>
+            <KEYWORD3>UnivariateSkewPolynomialCategory</KEYWORD3>
+            <KEYWORD3>OutputFormatterCategory</KEYWORD3>
+            <KEYWORD3>PAdicIntegerCategory</KEYWORD3>
+            <KEYWORD3>PatternMatchable</KEYWORD3>
+            <KEYWORD3>FullyPatternMatchable</KEYWORD3>
+            <KEYWORD3>Patternable</KEYWORD3>
+            <KEYWORD3>PlottablePlaneCurveCategory</KEYWORD3>
+            <KEYWORD3>PlottableSpaceCurveCategory</KEYWORD3>
+            <KEYWORD3>PermutationCategory</KEYWORD3>
+            <KEYWORD3>PolynomialSetCategory</KEYWORD3>
+            <KEYWORD3>FreeModuleCategory</KEYWORD3>
+            <KEYWORD3>AbelianMonoidRing</KEYWORD3>
+            <KEYWORD3>FiniteAbelianMonoidRing</KEYWORD3>
+            <KEYWORD3>MaybeSkewPolynomialCategory</KEYWORD3>
+            <KEYWORD3>PolynomialCategory</KEYWORD3>
+            <KEYWORD3>UnivariatePolynomialCategory</KEYWORD3>
+            <KEYWORD3>PowerSeriesCategory</KEYWORD3>
+            <KEYWORD3>UnivariatePowerSeriesCategory</KEYWORD3>
+            <KEYWORD3>UnivariateTaylorSeriesCategory</KEYWORD3>
+            <KEYWORD3>UnivariateLaurentSeriesCategory</KEYWORD3>
+            <KEYWORD3>UnivariatePuiseuxSeriesCategory</KEYWORD3>
+            <KEYWORD3>MultivariateTaylorSeriesCategory</KEYWORD3>
+            <KEYWORD3>PartialTranscendentalFunctions</KEYWORD3>
+            <KEYWORD3>UnivariatePuiseuxSeriesConstructorCategory</KEYWORD3>
+            <KEYWORD3>QuaternionCategory</KEYWORD3>
+            <KEYWORD3>RealRootCharacterizationCategory</KEYWORD3>
+            <KEYWORD3>RealClosedField</KEYWORD3>
+            <KEYWORD3>RegularTriangularSetCategory</KEYWORD3>
+            <KEYWORD3>FullyRetractableTo</KEYWORD3>
+            <KEYWORD3>SPointCategory</KEYWORD3>
+            <KEYWORD3>SegmentCategory</KEYWORD3>
+            <KEYWORD3>SegmentExpansionCategory</KEYWORD3>
+            <KEYWORD3>TaylorSeriesExpansion</KEYWORD3>
+            <KEYWORD3>SExpressionCategory</KEYWORD3>
+            <KEYWORD3>RealConstant</KEYWORD3>
+            <KEYWORD3>RealNumberSystem</KEYWORD3>
+            <KEYWORD3>FloatingPointSystem</KEYWORD3>
+            <KEYWORD3>IntegerNumberSystem</KEYWORD3>
+            <KEYWORD3>MultivariateSkewPolynomialCategory</KEYWORD3>
+            <KEYWORD3>SolvableSkewPolynomialCategory</KEYWORD3>
+            <KEYWORD3>ThreeSpaceCategory</KEYWORD3>
+            <KEYWORD3>SquareFreeRegularTriangularSetCategory</KEYWORD3>
+            <KEYWORD3>LazyStreamAggregate</KEYWORD3>
+            <KEYWORD3>StringCategory</KEYWORD3>
+            <KEYWORD3>TensorProductCategory</KEYWORD3>
+            <KEYWORD3>TensorProductProperty</KEYWORD3>
+            <KEYWORD3>TensorPowerCategory</KEYWORD3>
+            <KEYWORD3>Coalgebra</KEYWORD3>
+            <KEYWORD3>Bialgebra</KEYWORD3>
+            <KEYWORD3>HopfAlgebra</KEYWORD3>
+            <KEYWORD3>BinaryTreeCategory</KEYWORD3>
+            <KEYWORD3>RadicalCategory</KEYWORD3>
+            <KEYWORD3>ElementaryFunctionCategory</KEYWORD3>
+            <KEYWORD3>ArcHyperbolicFunctionCategory</KEYWORD3>
+            <KEYWORD3>ArcTrigonometricFunctionCategory</KEYWORD3>
+            <KEYWORD3>HyperbolicFunctionCategory</KEYWORD3>
+            <KEYWORD3>TranscendentalFunctionCategory</KEYWORD3>
+            <KEYWORD3>TrigonometricFunctionCategory</KEYWORD3>
+            <KEYWORD3>PrimitiveFunctionCategory</KEYWORD3>
+            <KEYWORD3>LiouvillianFunctionCategory</KEYWORD3>
+            <KEYWORD3>CombinatorialFunctionCategory</KEYWORD3>
+            <KEYWORD3>SpecialFunctionCategory</KEYWORD3>
+            <KEYWORD3>TriangularSetCategory</KEYWORD3>
+            <KEYWORD3>VectorCategory</KEYWORD3>
+            <KEYWORD3>DirectProductCategory</KEYWORD3>
+            <KEYWORD3>LieAlgebra</KEYWORD3>
+            <KEYWORD3>FreeLieAlgebra</KEYWORD3>
+            <KEYWORD3>XAlgebra</KEYWORD3>
+            <KEYWORD3>XFreeAlgebra</KEYWORD3>
+            <KEYWORD3>XPolynomialsCat</KEYWORD3>
+
+			
+			<!-- system commands + some other -->
+			<KEYWORD4>Exports</KEYWORD4>
+			<KEYWORD4>Implementation</KEYWORD4>
+			<KEYWORD4>abbrev</KEYWORD4>
+			<KEYWORD4>abbreviation</KEYWORD4>
+			<KEYWORD4>cd</KEYWORD4>
+			<KEYWORD4>clear</KEYWORD4>
+			<KEYWORD4>close</KEYWORD4>
+			<KEYWORD4>compile</KEYWORD4>
+			<KEYWORD4>display</KEYWORD4>
+			<KEYWORD4>edit</KEYWORD4>
+			<KEYWORD4>frame</KEYWORD4>
+			<KEYWORD4>history</KEYWORD4>
+			<KEYWORD4>library</KEYWORD4>
+			<KEYWORD4>lisp</KEYWORD4>
+			<KEYWORD4>read</KEYWORD4>
+			<KEYWORD4>savesystem</KEYWORD4>
+			<KEYWORD4>set</KEYWORD4>
+			<KEYWORD4>show</KEYWORD4>
+			<KEYWORD4>spool</KEYWORD4>
+			<KEYWORD4>synonym</KEYWORD4>
+			<KEYWORD4>system</KEYWORD4>
+			<KEYWORD4>trace</KEYWORD4>
+			<KEYWORD4>undo</KEYWORD4>
+			<KEYWORD4>what</KEYWORD4>
+			
+			
+
+			
+		</KEYWORDS>
+	</RULES>
+
+	<!-- rulesets to syntax highlight string interpolation sequences -->
+	<RULES SET="LITERAL_ONE" DEFAULT="LITERAL1" ESCAPE="_">
+		<SEQ_REGEXP HASH_CHAR="%" TYPE="LITERAL4">%[.]?\d*[diouxXeEfFgGcrs]</SEQ_REGEXP>
+		<SEQ_REGEXP HASH_CHAR="%(" TYPE="LITERAL4">%\([^)]+\)[+ -]?\d*[diouxXeEfFgGcrs]</SEQ_REGEXP>
+	</RULES>
+	
+	<!-- triple-quoted strings has its own, since it's LITERAL2 by default -->
+	<RULES SET="LITERAL_TWO" DEFAULT="LITERAL2" ESCAPE="\">
+		<SEQ_REGEXP HASH_CHAR="%" TYPE="LITERAL4">%\d*[diouxXeEfFgGcrs]</SEQ_REGEXP>
+		<SEQ_REGEXP HASH_CHAR="%(" TYPE="LITERAL4">%\([^)]+\)[+ -]?\d*[diouxXeEfFgGcrs]</SEQ_REGEXP>
+		<SPAN TYPE="LITERAL3">
+			<BEGIN>B{</BEGIN>
+			<END>}</END>
+		</SPAN>
+		<SPAN TYPE="LITERAL3">
+			<BEGIN>C{</BEGIN>
+			<END>}</END>
+		</SPAN>
+		<SPAN TYPE="LITERAL3">
+			<BEGIN>E{</BEGIN>
+			<END>}</END>
+		</SPAN>
+		<SPAN TYPE="LITERAL3">
+			<BEGIN>I{</BEGIN>
+			<END>}</END>
+		</SPAN>
+		<SPAN TYPE="LITERAL3">
+			<BEGIN>L{</BEGIN>
+			<END>}</END>
+		</SPAN>
+		
+		<EOL_SPAN AT_WHITESPACE_END="TRUE" TYPE="LITERAL3">&gt;&gt;&gt;</EOL_SPAN>
+		<EOL_SPAN AT_WHITESPACE_END="TRUE" TYPE="LITERAL3">...</EOL_SPAN>
+		<MARK_FOLLOWING	TYPE="LITERAL3" AT_WHITESPACE_END="TRUE">@</MARK_FOLLOWING>
+
+	</RULES>
+
+</MODE>
+

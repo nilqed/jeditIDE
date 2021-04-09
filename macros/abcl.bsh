@@ -1,0 +1,32 @@
+// Start ABCL
+// Use javap(console) in BeanShell to see available methods, or visit:
+// => http://plugins.jedit.org/plugindoc/Console/javadoc/console/Console.html
+
+// Create a new floating console window
+abcl = wm.floatDockableWindow("console");
+id = abcl.getId();
+
+// Clear it
+abcl.clear();
+
+// Print a banner
+abcl.print(null,"");
+abcl.print(Color.blue, "Starting ABCL -- Armed Bear Common Lisp V 1.5");
+abcl.print(Color.blue, "Use (quit) or (cl-user::quit) to quit reliably ..."); 
+
+// Set a new title
+v=abcl.getParent().getParent().getParent().getParent();
+v.setTitle("ABCL");
+
+// Set colors
+abcl.getConsolePane().setForeground(Color.darkGray);
+
+// Change to abcl dir (must be a better solution ?)
+abcl.chDir(scriptPath+"/../../_sys/abcl-bin-1.5.0");
+abcl.run(abcl.getShell(),"java -jar abcl.jar");
+
+
+
+
+
+

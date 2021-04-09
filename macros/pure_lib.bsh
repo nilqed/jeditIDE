@@ -1,0 +1,1 @@
+exec("cmd /C start firefox https://agraef.github.io/pure-docs/purelib.html"); 

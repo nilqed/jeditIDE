@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!DOCTYPE MODES SYSTEM "catalog.dtd">
+
+<MODES>
+
+<MODE NAME="aldor"	FILE="aldor.xml"
+				FILE_NAME_GLOB="*.as" />
+        
+<MODE NAME="spad"	FILE="spad.xml"
+				FILE_NAME_GLOB="*.{spad,input}" />
+
+<MODE NAME="markdown"	FILE="markdown.xml"
+				FILE_NAME_GLOB="*.md" />
+
+<MODE NAME="coq"	FILE="coq.xml"
+				FILE_NAME_GLOB="*.v" />
+				
+<MODE NAME="basicenglish"	FILE="basicenglish.xml"
+				FILE_NAME_GLOB="*.ben" />
+
+<MODE NAME="julia"	FILE="julia.xml"
+				FILE_NAME_GLOB="*.jl" />
+
+<MODE NAME="maxima"	FILE="maxima.xml"
+				FILE_NAME_GLOB="*.mac" />
+				
+
+<MODE NAME="reduce"	FILE="reduce.xml"
+				FILE_NAME_GLOB="*.red" />
+				
+<MODE NAME="wikidpad"	FILE="wikidpad.xml"
+				FILE_NAME_GLOB="*.wiki" />
+				
+<MODE NAME="idris"	FILE="idris.xml"
+				FILE_NAME_GLOB="*.idr" />						
+
+<MODE NAME="gle"	FILE="gle.xml"
+				FILE_NAME_GLOB="*.gle" />	
+
+<!-- Add lines like the following, one for each edit mode you add: -->
+<!-- <MODE NAME="foo" FILE="foo.xml" FILE_NAME_GLOB="*.foo" /> -->
+
+</MODES>

@@ -1,0 +1,37 @@
+/*..
+This is a BeanShell macro for jEdit to extract Pure documentation from
+code files (by using pure-doc).
+*/
+
+// Save the buffer index
+id = buffer.getIndex();
+
+// Get the patho the pure code
+purefile = buffer.getPath();
+filename = buffer.getName();
+dirname  = buffer.getDirectory();
+
+// Create a .rst file with the same name
+parts = filename.split("\\.");
+rstfile = parts[0] + ".rst"; 
+
+// Tailor the command ofr pure-doc
+command = "pure-doc -s " + purefile;  
+runCommandToBuffer(view , "System", command);
+//command = "pure-doc -s " + purefile + " > " + dirname + rstfile;  
+//runInSystemShell(view , command);
+waitForConsole(view);
+//console.setShell("BeanShell");
+
+// Find the newly created buffer
+//view.goToBuffer(buffer);
+buffers = view.getBuffers();
+//rstbuf = buffers[buffers.length-1];
+rstbuf = view.getBuffers()[view.getBuffers().length-1];
+//rstbuf.save(view, dirname + rstfile);
+if (rstbuf.isUntitled() && rstbuf.isNewFile()) 
+    { rstbuf.save(view, dirname + rstfile); }; 
+    
+
+ 
+

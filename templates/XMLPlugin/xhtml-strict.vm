@@ -1,0 +1,9 @@
+<?xml verstion="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- this is an empty XHTML document with the STRICT DTD
+     $Id: xhtml-strict.vm 20081 2011-10-15 16:19:59Z kerik-sf $
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+</html>

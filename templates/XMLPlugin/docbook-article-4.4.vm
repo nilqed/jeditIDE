@@ -1,0 +1,28 @@
+<!-- :xml.validate.ignore-dtd=true: -->
+<!DOCTYPE article [
+  <!ENTITY % isolat1 PUBLIC "ISO 8879:1986//ENTITIES Added Latin 1//EN//XML" "http://www.oasis-open.org/docbook/xmlcharent/0.3/iso-lat1.ent" >
+  <!ENTITY % isogrk1 PUBLIC "ISO 8879:1986//ENTITIES Greek Letters//EN//XML"  "http://www.oasis-open.org/docbook/xmlcharent/0.3/iso-grk1.ent" >
+  <!ENTITY % isoamso PUBLIC
+         "ISO 8879:1986//ENTITIES Added Math Symbols: Ordinary//EN//XML"
+         "http://www.w3.org/2003/entities/iso8879/isoamso.ent"
+  >
+  %isolat1;
+  %isogrk1;
+]>
+<!-- this is an empty article validated using XML Schema (XSD) and
+     still having the Docbook entities available.
+     If you don't use any named entity (&eacute; and the like),
+     feel free to remove the DOCTYPE section over there.
+     $Id: docbook-article-4.4.vm 20081 2011-10-15 16:19:59Z kerik-sf $
+  -->
+<article
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    xsi:noNamespaceSchemaLocation="http://www.docbook.org/xsd/4.4/docbook.xsd"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    id="root-article">
+
+<abstract>
+<para>My article makes use of entities like &eacute; or &planck;!</para>
+</abstract>
+
+</article>

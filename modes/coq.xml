@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE MODE SYSTEM "xmode.dtd">
+<!--- !!!! IMPORT Works like include in the coq-ssr.lang def -->
+<!-- Coq mode -->
+<MODE>
+  <PROPS>
+    <PROPERTY NAME="commentStart" VALUE="(*"/>
+    <PROPERTY NAME="commentEnd" VALUE="*)"/>
+    <PROPERTY NAME="noWordSep" VALUE="$_'"/>
+    <PROPERTY NAME="unalignedOpenBrackets" VALUE="{[(" />
+    <PROPERTY NAME="unalignedCloseBrackets" VALUE=")]}" />
+    <PROPERTY NAME="tabSize" VALUE="2" />
+    <PROPERTY NAME="indentSize" VALUE="2" />
+  </PROPS>
+  
+  <RULES  IGNORE_CASE="FALSE">
+    <SPAN_REGEXP TYPE="KEYWORD1" DELEGATE="Tactics">
+      <BEGIN>Proof\.</BEGIN>
+      <END REGEXP="TRUE">(Qed)|(Defined)|(Admitted)|(Abort).</END>
+    </SPAN_REGEXP>
+    
+    <SPAN TYPE="COMMENT1" DELEGATE="comment-in-comment">
+      <BEGIN>(*</BEGIN>
+      <END>*)</END>
+    </SPAN>
+    
+    <SPAN_REGEXP TYPE="KEYWORD1" DELEGATE="declaration">
+      <BEGIN>(((((Local)|(Global))\p{Space}+)?(Program\p{Space}+)?((Definition)|(Let)|(Example)|(SubClass)|(Fixpoint)|(CoFixpoint)|(Scheme)|(Function)|(Hypothesis)|(Axiom)|(Variable)|(Parameter)|(Conjecture)|(Inductive)|(CoInductive)|(Record)|(Structure)|(Ltac)|(Instance)|(Context)|(Class)|(Module(\p{Space}+Type)?)|(Existing\p{Space}+Instance)|(Canonical\p{Space}+Structure)|(Canonical)|(Coercion)|(Lemma)|(Fact)|(Remark)|(Corollary)|(Proposition)|(Property)}))\p{Space}+)</BEGIN>
+      <END REGEXP="TRUE">\.(\p{Space}+|$)</END>
+    </SPAN_REGEXP>
+    
+    <IMPORT DELEGATE="string" /> 
+  </RULES>
+  
+  <RULES SET="declaration">
+    <KEYWORDS>
+      <KEYWORD2>forall</KEYWORD2>
+      <KEYWORD2>fun</KEYWORD2>
+      <KEYWORD2>match</KEYWORD2>
+      <KEYWORD2>fix</KEYWORD2>
+      <KEYWORD2>cofix</KEYWORD2>
+      <KEYWORD2>with</KEYWORD2>
+      <KEYWORD2>for</KEYWORD2>
+      <KEYWORD2>end</KEYWORD2>
+      <KEYWORD2>as</KEYWORD2>
+      <KEYWORD2>let</KEYWORD2>
+      <KEYWORD2>in</KEYWORD2>
+      <KEYWORD2>if</KEYWORD2>
+      <KEYWORD2>then</KEYWORD2>
+      <KEYWORD2>else</KEYWORD2>
+      <KEYWORD2>return</KEYWORD2>
+      <KEYWORD2>using</KEYWORD2>
+    </KEYWORDS>
+  </RULES>
+  
+  <RULES SET="string">
+    <SPAN TYPE="LITERAL4" ESCAPE='""'>
+      <BEGIN>"</BEGIN>
+      <END>"</END>
+    </SPAN>
+  </RULES>
+  
+  <RULES SET="comment-in-comment" DEFAULT="COMMENT1">
+    <SPAN TYPE="COMMENT1" DELEGATE="comment-in-comment">
+      <BEGIN>(*</BEGIN>
+      <END>*)</END>
+    </SPAN>
+    
+    <IMPORT DELEGATE="string" />
+  </RULES>
+  
+  <RULES SET="Tactics">
+    <KEYWORDS>
+      <KEYWORD2>intros</KEYWORD2>
+      <KEYWORD2>induction</KEYWORD2>
+      <KEYWORD2>apply</KEYWORD2>
+      <KEYWORD2>auto</KEYWORD2>
+      <KEYWORD2>case</KEYWORD2>
+      <KEYWORD2>case</KEYWORD2>
+      <KEYWORD2>congr</KEYWORD2>
+      <KEYWORD2>elim</KEYWORD2>
+      <KEYWORD2>exists</KEYWORD2>
+      <KEYWORD2>have</KEYWORD2>
+      <KEYWORD2>gen have</KEYWORD2>
+      <KEYWORD2>generally have</KEYWORD2>
+      <KEYWORD2>move</KEYWORD2>
+      <KEYWORD2>pose</KEYWORD2>
+      <KEYWORD2>rewrite</KEYWORD2>
+      <KEYWORD2>set</KEYWORD2>
+      <KEYWORD2>split</KEYWORD2>
+      <KEYWORD2>suffices</KEYWORD2>
+      <KEYWORD2>suff</KEYWORD2>
+      <KEYWORD2>transitivity</KEYWORD2>
+      <KEYWORD2>without loss</KEYWORD2>
+      <KEYWORD2>wlog</KEYWORD2>
+      
+       <KEYWORD3>by</KEYWORD3>
+       <KEYWORD3>exact</KEYWORD3>
+       <KEYWORD3>reflexivity</KEYWORD3>
+       <KEYWORD3>now</KEYWORD3>
+       
+       <KEYWORD4>do</KEYWORD4>
+       <KEYWORD4>last</KEYWORD4>
+       <KEYWORD4>first</KEYWORD4>
+    </KEYWORDS>
+
+    <IMPORT DELEGATE="comment-in-comment" />
+  </RULES>
+</MODE>

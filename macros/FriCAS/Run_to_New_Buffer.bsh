@@ -1,0 +1,37 @@
+toggleBottomDockingArea()
+{
+	dockarea = view.getDockableWindowManager().getBottomDockingArea();
+	if(dockarea.getCurrent() == null)
+	{
+		dockarea.showMostRecent();
+		name = dockarea.getCurrent();
+		component = view.getDockableWindowManager().getDockable(name);
+		if(component instanceof DefaultFocusComponent)
+			component.focusOnDefaultComponent();
+	}
+	else
+	{
+		dockarea.show(null);
+		view.getTextArea().requestFocus();
+	}
+}
+
+
+
+
+// FriCAS )read current buffer and eval 
+rc="C:/FriCAS/fricas-eval \")read $f\"" ;
+
+//
+//runInSystemShell(view,rc);
+
+// Get mode of current buffer
+m = buffer.getMode();
+
+// Run 'rc', output to new buffer
+if (m.name.equals("spad")) 
+  {runCommandToBuffer(view,"System",rc);
+   toggleBottomDockingArea();
+  }
+else
+  {runInSystemShell(view,"echo wrong mode ...");};

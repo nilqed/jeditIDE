@@ -1,0 +1,10 @@
+S=console.setShell("System");  
+O= console.getOutput();
+O.print(null,"wo denn?");
+console.setShell("BeanShell");
+D=O.getDocument();
+txt=D.getText(1,100);
+D.getLength();
+print(txt);
+
+// source("C:/Users/scios/AppData/Roaming/jEdit/macros/FriCAS/sysconsole.bsh");

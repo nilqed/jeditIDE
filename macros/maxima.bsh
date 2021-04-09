@@ -1,0 +1,30 @@
+// Start FriCAS
+// Use javap(console) in BeanShell to see available methods, or visit:
+// => http://plugins.jedit.org/plugindoc/Console/javadoc/console/Console.html
+
+// Create a new floating console window
+maxima = wm.floatDockableWindow("console");
+id = maxima.getId();
+
+// Clear it
+maxima.clear();
+
+// Print a banner
+maxima.print(null,"");
+maxima.print(Color.blue, "Starting Maxima 5.41.0");
+maxima.print(Color.blue, "Use quit(); to leave Maxima."); 
+
+// Set a new title
+v=maxima.getParent().getParent().getParent().getParent();
+v.setTitle("Maxima");
+
+// Set colors
+maxima.getConsolePane().setForeground(Color.darkGray);
+
+// Change to maxima dir (must be a better solution ?)
+maxima.chDir(scriptPath+"/../../_sys/maxima_abcl_5.41/src");
+maxima.run(maxima.getShell(),"java -jar ../../abcl-bin-1.5.0/abcl.jar --eval \"(progn (load (string 'maxima-build)) (maxima-load) (cl-user::run))\"");
+
+
+
+

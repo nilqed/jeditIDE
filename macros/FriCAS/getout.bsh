@@ -1,0 +1,14 @@
+//runCommandToBuffer(view,"System","dir");
+
+c1="javap(console);";
+c2="S=console.setShell(\"System\");";
+c3="O=console.getOutput();";
+c4="D=O.getDocument();";
+c5="l=D.getLength();";
+c6="txt=D.getText(1,l);";
+c7="txt";
+cmd=c1+c2+c3+c4+c5+c6+c7;
+
+runCommandToBuffer(view,"BeanShell",cmd);
+
+//ok

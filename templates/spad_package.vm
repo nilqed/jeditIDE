@@ -1,0 +1,33 @@
+#set ($author="Kurt Pagani")
+#today ( $defaultdate )
+#today ( $yearonly "yyyy" )
+#today ( $otherdate "dd-MMM-yyyy" )
+#prompt ( "Package abbreviation:" $abbrev )
+#prompt ( "Full package name:" $package )
+#prompt ( "Package parameters:" $params )
+#prompt ( "Add domain:" $addDomain )
+#prompt ( "Category assertion(s):" $categoryAssertions )
+##
+)abbrev package $abbrev $package
+++ Author: $author
+++ Date Created: $defaultdate
+++ License: BSD
+++ References:
+++ Description:
+++
+$package($params) : Exports == Implementation where
+  
+  --optional type declarations, e.g.
+  --PINT   ==> Polynomial(Integer)
+  --SBPINT ==> SegmentBinding(PINT)
+  
+  Exports == $categoryAssertions with
+    
+    --list of exported operations, e.g.
+    --coerce : % -> OutputForm
+	
+	
+  Implementation == $addDomain add 
+    
+    --list of function definitions for exported operations
+   

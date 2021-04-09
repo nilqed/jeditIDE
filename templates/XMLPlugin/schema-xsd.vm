@@ -1,0 +1,16 @@
+<?xml version='1.0'?>
+<!-- this is an empty XML Schema document.
+	$Id: schema-xsd.vm 20081 2011-10-15 16:19:59Z kerik-sf $
+  -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="PASTE THE NAMESPACE OF THE TARGET DOCUMENTS HERE"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.w3.org/2001/XMLSchema http://www.w3.org/2001/XMLSchema.xsd">
+  <xs:annotation>
+    <xs:documentation>
+    You can define your documentation in comments or in xs:documentation elements.
+    </xs:documentation>
+  </xs:annotation>
+
+  
+</xs:schema>

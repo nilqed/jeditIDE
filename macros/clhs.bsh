@@ -1,0 +1,5 @@
+exec("cmd /C start firefox http://clhs.lisp.se/"); 
+exec("cmd /C start firefox http://jtra.cz/stuff/lisp/sclr/index.html"); 
+exec("cmd /C start firefox https://www.cs.cmu.edu/Groups/AI/html/cltl/clm/index.html"); 
+
+

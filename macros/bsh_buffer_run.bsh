@@ -1,0 +1,6 @@
+script = buffer.getText(0,buffer.getLength());
+result = BeanShell.eval(view,BeanShell.getNameSpace(),script);
+if (null != result) {
+    print("\n" + result);
+}
+

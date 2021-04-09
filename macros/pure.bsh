@@ -1,0 +1,31 @@
+// Start Pure
+// Use javap(console) in BeanShell to see available methods, or visit:
+// => http://plugins.jedit.org/plugindoc/Console/javadoc/console/Console.html
+
+// Create a new floating console window
+pure = wm.floatDockableWindow("console");
+id = pure.getId();
+
+// Clear it
+pure.clear();
+
+// Print a banner
+pure.print(null,"");
+pure.print(Color.blue, "Starting Pure -- https://purelang.bitbucket.io/");
+pure.print(Color.blue, "Use 'quit' to quit reliably ..."); 
+
+// Set a new title
+v=pure.getParent().getParent().getParent().getParent();
+v.setTitle("Pure");
+
+// Set colors
+pure.getConsolePane().setForeground(Color.darkGray);
+
+//pure.chDir(scriptPath+"");
+pure.run(pure.getShell(),"pure -i");
+
+
+
+
+
+

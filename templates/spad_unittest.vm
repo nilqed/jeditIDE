@@ -1,0 +1,29 @@
+#set ($author="Kurt Pagani")
+#today ( $defaultdate )
+#today ( $yearonly "yyyy" )
+#today ( $otherdate "dd-MMM-yyyy" )
+#prompt ( "Name of Test Suite:" $testsuite )
+##
+-- Unittest .....: $testsuite
+-- Author .......: $author
+-- Date .........: $defaultdate
+
+)set break resume
+)expose UnittestCount UnittestAux Unittest
+
+-- )expose packages
+
+-- Test Suite
+testsuite "$testsuite"
+
+-- Cases
+-- testcase "case1"
+-- testEquals("", "")
+
+-- Results/Statistics
+)set output algebra on
+)version
+)lisp (lisp-implementation-type)
+)lisp (lisp-implementation-version)
+
+statistics()

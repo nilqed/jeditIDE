@@ -1,0 +1,31 @@
+// Start FriCAS
+// Use javap(console) in BeanShell to see available methods, or visit:
+// => http://plugins.jedit.org/plugindoc/Console/javadoc/console/Console.html
+
+// Create a new floating console window
+fricas = wm.floatDockableWindow("console");
+id = fricas.getId();
+
+// Clear it
+fricas.clear();
+
+// Print a banner
+fricas.print(null,"");
+fricas.print(Color.blue, "Starting FriCAS 1.3.2");
+fricas.print(Color.blue, "Use )quit to leave FriCAS."); 
+
+// Set a new title
+v=fricas.getParent().getParent().getParent().getParent();
+v.setTitle("FriCAS");
+
+// Set colors
+fricas.getConsolePane().setForeground(Color.darkGray);
+
+// Change to fricas dir (must be a better solution ?)
+fricas.chDir(scriptPath+"/../../_sys/fricas_abcl_1.3.2");
+fricas.run(fricas.getShell(),"java -jar ../abcl-bin-1.5.0/abcl.jar --load fricas");
+
+
+
+
+

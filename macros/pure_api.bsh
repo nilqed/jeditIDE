@@ -1,0 +1,6 @@
+sel=textArea.getSelectedText();
+search="https://agraef.github.io/pure-docs/search.html?q=" + sel +
+       "&check_keywords=yes&area=default" ;
+
+exec("cmd /C start firefox " + search);
+

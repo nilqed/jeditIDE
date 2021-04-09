@@ -1,0 +1,1 @@
+exec("cmd /C start firefox file:///C:/FriCAS/doc/fricas_book/book-contents.xhtml"); 

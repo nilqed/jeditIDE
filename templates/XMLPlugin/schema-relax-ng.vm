@@ -1,0 +1,31 @@
+<?xml version="1.0" ?>
+
+<!-- this grammar will validate any well formed XML document.
+	For a quick memory refresher, see http://relaxng.org/tutorial-20011203.html
+	$Id: schema-relax-ng.vm 20081 2011-10-15 16:19:59Z kerik-sf $
+  -->
+<grammar xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+	 xmlns="http://relaxng.org/ns/structure/1.0"
+	 datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+
+<define name="any">
+    <zeroOrMore>
+      <choice>
+        <attribute>
+          <anyName/>
+          <text/>
+        </attribute>
+        <element>
+          <anyName/>
+          <ref name="any"/>
+        </element>
+        <text/>
+      </choice>
+    </zeroOrMore>
+  </define>
+
+<start>
+	<ref name="any"/>
+</start>
+
+</grammar>

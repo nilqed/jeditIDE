@@ -1,0 +1,25 @@
+#set ($author="Author")
+#today ( $defaultdate )
+#today ( $yearonly "yyyy" )
+#today ( $otherdate "dd-MMM-yyyy" )
+#prompt ( "Category abbreviation:" $abbrev )
+#prompt ( "Full category name:" $category )
+#prompt ( "Category parameters:" $params )
+#prompt ( "Extensions:" $extensions)
+##
+)abbrev category $abbrev $category
+++ Author: $author
+++ Date Created: $defaultdate
+++ License: BSD
+++ References:
+++ Description:
+++
+$category($params) : Category == $extensions with
+
+    -- Exports
+
+  add
+
+    -- Defaults
+
+

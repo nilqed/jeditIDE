@@ -1,0 +1,6 @@
+sel=textArea.getSelectedText();
+search="http://fricas.github.io/search.html?q=" + sel +
+       "&check_keywords=yes&area=default" ;
+//exec("cmd /C start firefox http://fricas.github.io/api/index.html")
+exec("firefox " + search);
+

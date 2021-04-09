@@ -1,0 +1,3 @@
+<MODE NAME="spad" FILE="spad.xml" FILE_NAME_GLOB="*.{spad,input}" />
+
+

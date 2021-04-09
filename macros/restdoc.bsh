@@ -1,0 +1,2 @@
+exec("cmd /C start firefox https://rest-sphinx-memo.readthedocs.io/en/latest/ReST.html");
+exec("cmd /C start firefox  http://openalea.gforge.inria.fr/doc/openalea/doc/_build/html/source/sphinx/rest_syntax.html"); 
