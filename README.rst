@@ -1,3 +1,20 @@
+===============
+jEdit IDE HowTo
+===============
+
+:jEdit Homepage: http://www.jedit.org/
+:Wikipedia: https://en.wikipedia.org/wiki/JEdit
+
+jEdit is a mature programmer's text editor with hundreds (counting the time developing plugins) of person-years of development behind it. 
+
+In less than no time it can be configured into an IDE for almost any language. For this ``HowTo`` we will use the computer algebra system 
+``FriCAS``. Hence we assume you have ``fricas`` installed and you are using some Lin(ux) or Windows 10/WSL. The editor ``jEdit`` can be installed by ``apt/deb`` (used below) or by a method described on the jEdit Homepage.
+
+.. image:: docs/pics/jeditIDE.png
+  :alt: jeditIDE
+ 
+
+
 Install jEdit
 =============
 
